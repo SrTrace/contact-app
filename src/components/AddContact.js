@@ -15,16 +15,15 @@ class AddContact extends Component {
                         />
                     </div>
                     <div className="field">
-                        <label>Name</label>
+                        <label>Email</label>
                         <input
                             type="text"
-                            name="name"
-                            placeholder="Name"
+                            name="email"
+                            placeholder="Email"
                         />
                     </div>
                     <button className="ui button blue">Add</button>
                 </form>
-
             </div>
         );
     }
