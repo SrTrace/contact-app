@@ -11,7 +11,7 @@ function App() {
     const [contacts, setContacts] = useState([]);
 
     const addContactHandler = (contact) => {
-        console.log(contact);
+        // console.log(contact);
         setContacts([...contacts, {id: uuid_v4(), ...contact}]);
     };
 
@@ -38,15 +38,16 @@ function App() {
             <Router>
                 <Header/>
                 <Switch>
-                    <Route path="/" exact component={() => (
-                        <ContactList contacts={contacts} getContactId={removeContactHandler}/>
-                    )}/>
-                    <Route path="/add" component={() => (
-                        <AddContact addContactHandler={addContactHandler}/>
-                    )}/>
+                    <Route
+                        path="/"
+                        exact
+                        render={(props)=> (<ContactList {...props} contacts={contacts} getContactId={removeContactHandler}/>)}
+                    />
+                    <Route
+                        path="/add"
+                        render={(props)=> (<AddContact {...props} addContactHandler={addContactHandler}/>)}
+                    />
                 </Switch>
-                {/*<AddContact addContactHandler={addContactHandler}/>*/}
-                {/*<ContactList contacts={contacts} getContactId={removeContactHandler}/>*/}
             </Router>
         </div>
     );
