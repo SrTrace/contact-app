@@ -18,9 +18,15 @@ function App() {
       return response.data;
     };
 
-    const addContactHandler = (contact) => {
+    const addContactHandler = async (contact) => {
         // console.log(contact);
-        setContacts([...contacts, {id: uuid_v4(), ...contact}]);
+        const request = {
+            id: uuid_v4(),
+            ...contact
+        };
+        const response = await api.post("/contacts", request);
+        console.log(response);
+        setContacts([...contacts, response.data]);
     };
 
     const removeContactHandler = (id) => {
@@ -44,7 +50,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+        // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
     }, [contacts]);
 
     return (
