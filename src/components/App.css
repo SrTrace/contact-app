@@ -2,6 +2,10 @@
   margin-top: 5em;
 }
 
+.main h2>a {
+  float: right;
+}
+
 .center {
   justify-content: center;
   padding: 10px;
