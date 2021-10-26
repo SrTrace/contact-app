@@ -4,8 +4,7 @@ import ContactCard from "./ContactCard";
 
 
 const ContactList = (props) => {
-    console.log(props);
-
+    const inputEl = useRef("");
     const deleteContactHandler = (id) => {
         props.getContactId(id);
     };
@@ -21,7 +20,7 @@ const ContactList = (props) => {
     });
 
     const getSearchTerm = () => {
-
+        props.searchKeyword(inputEl.current.value);
     };
 
     return (
@@ -35,6 +34,7 @@ const ContactList = (props) => {
             <div className="ui search">
                 <div className="ui icon input">
                     <input
+                        ref={inputEl}
                         type="text"
                         placeholder="Search Contacts"
                         className="prompt"

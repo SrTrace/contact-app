@@ -48,8 +48,8 @@ function App() {
         setContacts(newContactList);
     };
 
-    const searchHandler = () => {
-
+    const searchHandler = (searchTerm) => {
+       setSearchTerm(searchTerm);
     };
 
     useEffect(() => {
