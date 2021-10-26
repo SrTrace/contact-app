@@ -7,6 +7,7 @@ import Header from './Header';
 import AddContact from './AddContact';
 import ContactList from './ContactList';
 import ContactDetail from "./ContactDetail";
+import EditContact from "./EditContact";
 
 function App() {
     const LOCAL_STORAGE_KEY = "contacts";
@@ -28,6 +29,8 @@ function App() {
         console.log(response);
         setContacts([...contacts, response.data]);
     };
+
+    const updateContactHandler = () => {};
 
     const removeContactHandler = async (id) => {
         await api.delete(`/contacts/${id}`);
@@ -67,6 +70,10 @@ function App() {
                     <Route
                         path="/add"
                         render={(props)=> (<AddContact {...props} addContactHandler={addContactHandler}/>)}
+                    />
+                    <Route
+                        path="/edit"
+                        render={(props)=> (<EditContact {...props} updateContactHandler={updateContactHandler}/>)}
                     />
                     <Route path="/contact/:id" component={ContactDetail}/>
                 </Switch>
