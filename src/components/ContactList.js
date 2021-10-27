@@ -45,7 +45,9 @@ const ContactList = (props) => {
                 </div>
             </div>
             <div className="ui celled list">
-                {renderContactList}
+                {renderContactList.length > 0
+                    ? renderContactList
+                    : "No Contacts Available"}
             </div>
 
         </div>
